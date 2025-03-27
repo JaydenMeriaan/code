@@ -6,11 +6,15 @@ if(isset($_POST['submit'])){
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
     $gender = filter_input(INPUT_POST, 'gender',FILTER_SANITIZE_SPECIAL_CHARS);
     $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_SPECIAL_CHARS);
+    $eten = filter_input(INPUT_POST, 'eten', FILTER_SANITIZE_SPECIAL_CHARS);
+    $nation = filter_input(INPUT_POST, 'nation', FILTER_SANITIZE_SPECIAL_CHARS);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
 
     echo 'Beste: '. $gender . ',</br>
     Uw naam is: '. $name . ', </br>
      Uw leeftijd is: '. $age . ', </br>
+     Uw Favourite eten is: '. $eten . ', </br>
+      Uw nationailteit is: '. $nation . ', </br>
       Uw email is: '. $email . '     </br>
     ';
 }
@@ -48,6 +52,12 @@ if(isset($_POST['submit'])){
 
         <label for="age">Leeftijd: </label>
         <input type="number" name="age" id="age"><br>
+
+        <label for="eten">Favourite Eten:</label>
+        <input type="text" name="eten" id="eten"><br>
+
+        <label for="nation">Nationaliteit</label>
+        <input type="text" name="nation" id="nation"><br>
 
         <label for="email">Email: </label>
         <input type="email" name="email" id="email"><br>
