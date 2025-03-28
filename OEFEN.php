@@ -77,7 +77,7 @@ if ($resultaat !== '') {
                 </article>
             <?php endforeach; ?>
 
-
+-------------------------------------------------
     
 </body>
 </html>
