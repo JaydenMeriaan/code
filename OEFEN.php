@@ -43,7 +43,8 @@ if ($resultaat !== '') {
 
 ?>
 -----------------------------------------------------
-                   // Database linken
+                  
+    // Database linken
       <?php
         // Link met de database
         try {
@@ -58,9 +59,11 @@ if ($resultaat !== '') {
 
         // Data opvangen en tonen op het scherm
         $laptops = $query->fetchAll(PDO::FETCH_ASSOC);
-        ?>
+     ?>
+
 ----------------------------------------------------
-    //Dingen van de database laten zien in beeld
+    
+    // Dingen van de database laten zien in beeld
      <?php foreach ($laptops as $laptop): ?>
                 <article class="product">
                     <div class="pic-pc">
