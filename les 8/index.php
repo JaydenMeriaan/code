@@ -1,12 +1,12 @@
 <?php
-    //const altijd hoofdletter
-    require 'db.php';
-    const GENDER_REQUIRED = "Vul uw geslacht in";
-    const NAME_REQUIRED = "Vul uw naam in";
-    const AGE_REQUIRED = "Vul uw leeftijd in";
-    const EMAIL_REQUIRED = "Vul uw email in";
-    $error = [];
-    $input = [];
+//const altijd hoofdletter
+require 'db.php';
+const GENDER_REQUIRED = "Vul uw geslacht in";
+const NAME_REQUIRED = "Vul uw naam in";
+const AGE_REQUIRED = "Vul uw leeftijd in";
+const EMAIL_REQUIRED = "Vul uw email in";
+$error = [];
+$input = [];
 
 if(isset($_POST['submit'])){
     //post haalt het uit de HTML form
@@ -49,8 +49,21 @@ if(isset($_POST['submit'])){
 
 
     if (count($error)=== 0);{
-        global
-    ;
+        global $db;
+
+        $query = $db ->prepare('INSERT INTO user (gender, name, age, email)VALUES (:gender, :name, :age, :email)');
+        $query->bindParam('gender', $gender);
+        $query->bindParam('name', $name);
+        $query->bindParam('age', $age);
+        $query->bindParam('email', $email);
+        $query->execute(); // uitvoeren
+
+
+        header('Location: users.php ');
+
+
+        //de van de INSERT vult de eerste van VALUES.
+        //Als je de eerste van INSERT name noemt en de eerste VALUES email noemt dan gaat die een email invullen.
     }
 
 
@@ -102,3 +115,4 @@ if(isset($_POST['submit'])){
 
 </body>
 </html>
+

@@ -1,5 +1,6 @@
 <?php
 //het ophalen uit de HTML code
+
 if(isset($_POST['submit'])){
     $getal1 = filter_input(INPUT_POST, 'getal-1', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $getal2 = filter_input(INPUT_POST, 'getal-2', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
@@ -71,7 +72,7 @@ if ($resultaat !== '') {
 ----------------------------------------------------
 
     // Dingen van de database laten zien in beeld
-     <?php foreach ($laptops as $laptop): ?> // 1 voor 1 +
+     <?php foreach ($laptops as $laptop): ?> // laptop verander naar de gegeven naam, boven
                 <article class="product">
                     <div class="pic-pc">
                         <h1 class="laptop-name"><?php echo $laptop['name']; ?></h1>
@@ -83,6 +84,21 @@ if ($resultaat !== '') {
                     </div>
                 </article>
             <?php endforeach; ?>
+
+-------------------------------------------------
+
+<!-- Als je niks invult dart er een foutmelding komt-->
+<?php
+const NAME_REQUIRED = "Vul uw naam in";
+
+// <label for="name">Naam: </label>
+/*        <input type="text" name="name" id="name" value="<?=$input['name'] ?? ''?>"><br>*/
+//        <div><?= $error ['name'] ?? ''?><!--</div>-->
+
+
+<!--De code die erbij hoort-->
+
+?>
 
 -------------------------------------------------
 
