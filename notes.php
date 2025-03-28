@@ -1,11 +1,10 @@
 <?php
-$resultaat = ''; // Initialiseert de variabele voor het resultaat
-
+//het ophalen uit de HTML code
 if(isset($_POST['submit'])){
     $getal1 = filter_input(INPUT_POST, 'getal-1', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $getal2 = filter_input(INPUT_POST, 'getal-2', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $optellen = filter_input(INPUT_POST, 'optellen', FILTER_SANITIZE_STRING);
-
+    //Als er op optellen wordt geklikt dan moet die het bij elkaar doen.
     if ($optellen) {
         $resultaat = $getal1 + $getal2;
     }
@@ -22,19 +21,27 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 <form method="post">
-   
+   //Formulier maken met verschillende labels
+
+    <!-- Als je de radio vershcillende namen geeft kan je ze allebei aanvinken -->
+    <!-- Als je dezelfde naam geeft kan je er maar 1 aanvinken -->
+
+
     <label for="getal-1">Getal 1: </label>
     <input type="number" name="getal-1" id="getal-1" required><br>
 
+    //radio is een balletje waar je op kan klikken
+
     <input type="radio" name="optellen" value="plus">Optellen
-    
+
     <label for="getal-2">Getal 2: </label>
     <input type="number" name="getal-2" id="getal-2" required><br>
 
-   
+
     <button type="submit" name="submit">Bereken</button>
-    
+
 </form>
+
 
 <?php
 if ($resultaat !== '') {
@@ -43,7 +50,7 @@ if ($resultaat !== '') {
 
 ?>
 -----------------------------------------------------
-                  
+
     // Database linken
       <?php
         // Link met de database
@@ -54,17 +61,17 @@ if ($resultaat !== '') {
         }
 
         // Maak een sql-query en voer deze uit
-        $query = $db->prepare("SELECT * FROM laptops");
+        $query = $db->prepare("SELECT * FROM laptops"); // waar je het vandaan pakt
         $query->execute();
 
         // Data opvangen en tonen op het scherm
-        $laptops = $query->fetchAll(PDO::FETCH_ASSOC);
+        $laptops = $query->fetchAll(PDO::FETCH_ASSOC); // hier pakt die alles uit de tabel
      ?>
 
 ----------------------------------------------------
-    
+
     // Dingen van de database laten zien in beeld
-     <?php foreach ($laptops as $laptop): ?>
+     <?php foreach ($laptops as $laptop): ?> // 1 voor 1 +
                 <article class="product">
                     <div class="pic-pc">
                         <h1 class="laptop-name"><?php echo $laptop['name']; ?></h1>
@@ -78,6 +85,6 @@ if ($resultaat !== '') {
             <?php endforeach; ?>
 
 -------------------------------------------------
-    
+
 </body>
 </html>
