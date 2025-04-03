@@ -101,6 +101,59 @@ const NAME_REQUIRED = "Vul uw naam in";
 ?>
 
 -------------------------------------------------
+<?php
+require "db.php";
+global $db;
+
+$query = $db->query("SELECT * FROM vendor");
+$query->execute();
+
+$vendors = $query->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="div-1">
+    <header class="hd-db">
+        Airplane Database
+    </header>
+
+    <nav class="nav-bar">
+        <a href="index.php">Home</a>
+        <a href="newvendor.php">New Vendor</a>
+    </nav>
+</div>
+    <hr>
+    <div class="wrapper">
+        <h2>
+            Airplane Vendors
+        </h2>
+        <br>
+        <main class="main">
+        <?php foreach ($vendors as $vendor): ?>
+            <div class="vendor">
+                <img src="img<?php echo base64_encode($vendor['logo']); ?>"">
+                <p><?php echo $vendor['name'];?></p>
+                <p>Established: <?php echo $vendor['year_of_establishment'];?></p>
+                <?php echo "<a href='.php?id='>View Planes</a>" ?>
+            </div>
+        <?php endforeach; ?>
+        </main>
+    </div>
+
+</body>
+</html>
 
 </body>
 </html>
