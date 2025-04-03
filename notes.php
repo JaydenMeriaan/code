@@ -1,8 +1,8 @@
 <?php foreach ($vendors as $vendor): ?>
     <div>
-        <img src="<?php echo htmlspecialchars($vendor['img']); ?>" alt="Image of <?php echo htmlspecialchars($vendor['name']); ?>">
-        <p><?php echo htmlspecialchars($vendor['name']); ?></p>
-        <p>Established: <?php echo htmlspecialchars($vendor['year_of_established']); ?></p>
+        <img src="<?php echo($vendor['img']); ?>">
+        <p><?php echo $vendor['name'];?></p>
+        <p>Established: <?php echo $vendor['year_of_established'];?></p>
     </div>
 <?php endforeach; ?>
 
