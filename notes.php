@@ -1,3 +1,13 @@
+<?php foreach ($vendors as $vendor): ?>
+    <div>
+        <img src="<?php echo htmlspecialchars($vendor['img']); ?>" alt="Image of <?php echo htmlspecialchars($vendor['name']); ?>">
+        <p><?php echo htmlspecialchars($vendor['name']); ?></p>
+        <p>Established: <?php echo htmlspecialchars($vendor['year_of_established']); ?></p>
+    </div>
+<?php endforeach; ?>
+
+
+
 ##<?php
 //het ophalen uit de HTML code
 
