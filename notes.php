@@ -1,4 +1,4 @@
-<?php
+##<?php
 //het ophalen uit de HTML code
 
 if(isset($_POST['submit'])){
@@ -157,16 +157,24 @@ $vendors = $query->fetchAll(PDO::FETCH_ASSOC);
 
 </body>
 </html>
-
 <main class="main">
     <?php foreach ($vendors as $vendor): ?>
         <div class="vendor">
             <img src="img<?php echo base64_encode($vendor['logo']); ?>"">
             <p><?php echo htmlspecialchars($vendor['name']); ?></p>
             <p>Established: <?php echo htmlspecialchars($vendor['year_of_establishment']); ?></p>
-            <a href="planes.php?vendor_id=<?php echo urlencode($vendor['id']); ?>">View Planes</a>
+            <a href="vendor_detail.php?vendor_id=<?php echo urlencode($vendor['id']); ?>">View Details</a>
         </div>
     <?php endforeach; ?>
 </main>
-
+<main class="main">
+    <?php foreach ($vendors as $vendor): ?>
+        <div class="vendor">
+            <img src="img<?php echo base64_encode($vendor['logo']); ?>"">
+            <p><?php echo htmlspecialchars($vendor['name']); ?></p>
+            <p>Established: <?php echo htmlspecialchars($vendor['year_of_establishment']); ?></p>
+            <a href="vendor_detail.php?vendor_id=<?php echo urlencode($vendor['id']); ?>">View Details</a>
+        </div>
+    <?php endforeach; ?>
+</main>
 
