@@ -178,3 +178,15 @@ $vendors = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
 </main>
 
+
+
+
+
+
+<?php foreach ($vendors as $vendor): ?>
+    <div>
+        <img src="<?php echo($vendor['img']); ?>"">
+        <p><?php echo $vendor['name'];?></p>
+        <p>Established: <?php echo $vendor['year_of_established'];?></p>
+    </div>
+<?php endforeach; ?>
