@@ -1,11 +1,11 @@
 <?php foreach ($vendors as $vendor): ?>
-                <div class="detail">
-                    <img src="img <?php echo base64_encode($vendor['logo']); ?>">
-                    <p><?php echo $vendor['name'];?></p>
-                    <p>Established: <?php echo $vendor['year_of_establishment'];?></p>
-                    <a href="detail.php?id= <?=$vendor['id']?>">View Planes</a>
-                </div>
-            <?php endforeach; ?>
+    <div class="detail">
+        <img src="<?php echo $vendor['logo']; ?>" alt="Logo">
+        <p><?php echo $vendor['name']; ?></p>
+        <p>Established: <?php echo $vendor['year_of_establishment']; ?></p>
+        <a href="detail.php?id=<?php echo $vendor['id']; ?>">View Planes</a>
+    </div>
+<?php endforeach; ?> ?>
 
 
 ##<?php
