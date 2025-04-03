@@ -1,3 +1,86 @@
+
+<?php
+require 'db.php';
+
+const NAME_REQUIRED = "Vul de naam van het vliegtuig in";
+const YEAR_REQUIRED = "Vul het bouwjaar in";
+const LOGO_REQUIRED = "Vul de bestandsnaam van het logo in";
+
+$error = [];
+$input = [];
+
+if (isset($_POST['submit'])) {
+    // Formulierdata ophalen en valideren
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+    if (empty($name)) {
+        $error['name'] = NAME_REQUIRED;
+    } else {
+        $input['name'] = $name;
+    }
+
+    $year = filter_input(INPUT_POST, 'year', FILTER_VALIDATE_INT);
+    if (empty($year)) {
+        $error['year'] = YEAR_REQUIRED;
+    } else {
+        $input['year'] = $year;
+    }
+
+    $logo = filter_input(INPUT_POST, 'logo', FILTER_SANITIZE_SPECIAL_CHARS);
+    if (empty($logo)) {
+        $error['logo'] = LOGO_REQUIRED;
+    } else {
+        $input['logo'] = $logo;
+    }
+
+    if (count($error) === 0) {
+        global $db;
+        $query = $db->prepare('INSERT INTO planes (name, year, logo) VALUES (:name, :year, :logo)');
+        $query->bindParam(':name', $name);
+        $query->bindParam(':year', $year);
+        $query->bindParam(':logo', $logo);
+        $query->execute();
+
+        header('Location: index.php');
+        exit();
+    }
+}
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/new_plane.css">
+    <title>Add Airplane</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add New Airplane</h2>
+    <form method="post">
+        <label for="name">Airplane Name:</label>
+        <input type="text" name="name" id="name" value="<?= $input['name'] ?? '' ?>" required>
+        <div><?= $error['name'] ?? '' ?></div>
+
+        <label for="year">Year Built:</label>
+        <input type="number" name="year" id="year" value="<?= $input['year'] ?? '' ?>" required>
+        <div><?= $error['year'] ?? '' ?></div>
+
+        <label for="logo">Logo Filename:</label>
+        <input type="text" name="logo" id="logo" value="<?= $input['logo'] ?? '' ?>" required>
+        <div><?= $error['logo'] ?? '' ?></div>
+
+        <button type="submit" name="submit">Add Airplane</button>
+    </form>
+
+    <a href="index.php">Back to Vendors</a>
+</div>
+
+</body>
+</html>
+
 <?php
 // Link met de database
 try{
