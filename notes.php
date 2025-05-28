@@ -1,3 +1,20 @@
+formulier gegevsn tonen bovenaan
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $name = $_POST['name'];
+    $leeftijd = $_POST['leeftijd'];
+    $bericht = $_POST['bericht'];
+
+
+    echo "<h2>Gegevens ontvangen:</h2>";
+    echo "Naam: " . ($name) . "<br>";
+    echo "Leeftijd: " . ($leeftijd) . "<br>";
+    echo "Bericht: " . ($bericht) . "<br>";
+}
+?>
+
+
+
 <?php foreach ($vendors as $vendor): ?>
     <div class="detail">
         <img src="<?php echo $vendor['logo']; ?>" alt="Logo">
