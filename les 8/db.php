@@ -120,11 +120,11 @@ if (isset($_POST['submit'])) {
 
     if (count($error) === 0) {
         global $db;
-        $query = $db->prepare('INSERT INTO planes (name, year, logo) VALUES (:name, :year, :logo)');
-        $query->bindParam(':name', $name);
-        $query->bindParam(':year', $year);
-        $query->bindParam(':logo', $logo);
-        $query->execute();
+            $query = $db->prepare('INSERT INTO planes (name, year, logo) VALUES (:name, :year, :logo)');
+            $query->bindParam(':name', $name);
+            $query->bindParam(':year', $year);
+            $query->bindParam(':logo', $logo);
+            $query->execute();
 
         header('Location: index.php');
         exit();
